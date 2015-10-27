@@ -167,6 +167,7 @@ A good example of the type of analysis to strive for can be shown in Jacob Appel
 * Cryptographic Key Generation should be done carefully
     * Key Generation should generally not be done on device startup, as the device may be in a low or no-entropy state
     * Should use a blocking source of randomness
+    * Should not deplete the randomness source by using blocked IO (e.g. fopen(/dev/random)+fread(), see http://stackoverflow.com/questions/8699397 )
     * Special care should be taken if it is an embedded device or the quality of randomness is suspect
     * One party should not be able to control a key entirely in a shared-generation scenario
     * Keys should not be mathematically related, but instead derived through pseurandom mixing functions (hash functions)
